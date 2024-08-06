@@ -53,17 +53,18 @@ https://github.com/ogunjobiFX/MT4-MT5-Forex-Signal-Copier-Telegram-Bot
 3. Change start command to: python run.py
 4. Select create web service
 ```
+
 **6. Set Up Application Environment Variables**
 
-After creating your web service, navigate to enviornment tab and set the following:
+After creating your web service, navigate to environment tab and set the following:
 |Key  | Value |
 | ------------- | ------------- |
 | PYTHON_VERSION | 3.8.2 |
 | TOKEN | "INSERT TELEGRAM BOT API TOKEN HERE" |
 | APP_URL | "https://[INSERT NAME OF APP HERE].onrender.com/" |
 | TELEGRAM_USER | "INSERT TELEGRAM USERNAME HERE" |
-| API_KEY | "INSERT META API TOKEN HERE" (https://app.metaapi.cloud/token) |
-| ACCOUNT_ID | "INSERT META API ACCOUNT ID HERE" (https://app.metaapi.cloud/accounts) |
+| OANDA_API_KEY | "INSERT OANDA API TOKEN HERE" |
+| OANDA_ACCOUNT_ID | "INSERT OANDA ACCOUNT ID HERE" |
 | RISK_FACTOR | "INSERT PERCENTAGE OF RISK PER TRADE HERE IN DECIMAL FORM, ex: 5% = 0.05" |
 
 **6. Ensure That App Has Been Deployed**

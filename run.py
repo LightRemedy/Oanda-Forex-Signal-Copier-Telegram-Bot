@@ -14,8 +14,9 @@ from oandapyV20.endpoints.accounts import AccountDetails
 from oandapyV20.endpoints.orders import OrderCreate
 from oandapyV20.endpoints.pricing import PricingInfo
 from prettytable import PrettyTable
-from telegram import ParseMode, Update
-from telegram.ext import CommandHandler, Filters, MessageHandler, Updater, ConversationHandler, CallbackContext
+from telegram import Update
+from telegram.constants import ParseMode
+from telegram.ext import CommandHandler, filters, MessageHandler, Updater, ConversationHandler, CallbackContext
 
 # OANDA Credentials
 API_KEY = os.environ.get("OANDA_API_KEY")
@@ -479,8 +480,8 @@ def main() -> None:
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler("trade", Trade_Command), CommandHandler("calculate", Calculation_Command)],
         states={
-            TRADE: [MessageHandler(Filters.text & ~Filters.command, PlaceTrade)],
-            CALCULATE: [MessageHandler(Filters.text & ~Filters.command, CalculateTrade)],
+            TRADE: [MessageHandler(filters.text & ~filters.command, PlaceTrade)],
+            CALCULATE: [MessageHandler(filters.text & ~filters.command, CalculateTrade)],
             DECISION: [CommandHandler("yes", PlaceTrade), CommandHandler("no", cancel)]
         },
         fallbacks=[CommandHandler("cancel", cancel)],
@@ -490,7 +491,7 @@ def main() -> None:
     dp.add_handler(conv_handler)
 
     # message handler for all messages that are not included in conversation handler
-    dp.add_handler(MessageHandler(Filters.text, unknown_command))
+    dp.add_handler(MessageHandler(filters.text, unknown_command))
 
     # log all errors
     dp.add_error_handler(error)
